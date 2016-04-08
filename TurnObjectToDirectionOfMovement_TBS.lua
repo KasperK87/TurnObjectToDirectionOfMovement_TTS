@@ -1,5 +1,5 @@
 --[[set speed treshold for changing direction when dragging, need to spawn new object to take effect]]--
-local speedTreshold = 1 
+local speedTreshold = 1
 
 --[[local values]]--
 local fixate
@@ -16,9 +16,11 @@ end
 
 function update()
     if pickedup == true then
-         if math.sqrt(self.getVelocity()["x"]*self.getVelocity()["x"]
-            , self.getVelocity()["z"]*self.getVelocity()["z"]) > speedTreshold then 
-            local angle = math.atan2(self.getVelocity()["x"], self.getVelocity()["z"])
+        local velocity = self.getVelocity()
+
+         if math.sqrt(math.pow(velocity["x"],2)
+            , math.pow(velocity["z"],2)) > speedTreshold then 
+            local angle = math.atan2(velocity["x"], velocity["z"])
 
             fixate = {x = self.getRotation()["x"], y = math.deg(angle), z = self.getRotation()["z"]}
 

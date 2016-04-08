@@ -22,13 +22,13 @@ function update()
 
             fixate = {x = self.getRotation()["x"], y = math.deg(angle), z = self.getRotation()["z"]}
 
-            --[[BUG? setRotionSmooth can't rotate the object]]--
-            self.setRotation(fixate)
         
         else
             --[[BUG? the rotation is reset to original orintation unless setRotationSmooth is called]]--
-            self.setRotation(fixate)
             self.setRotationSmooth(fixate)
         end
+
+        --[[BUG? setRotionSmooth can't rotate the object]]--
+            self.setRotation(fixate)
     end
 end

@@ -7,7 +7,7 @@ local pickedup = false
 
 function onPickedUp()
     pickedup = true
-    fixate = {x = self.getRotation()["x"], y = self.getRotation()["y"], z = self.getRotation()["z"]}
+    fixate = self.getRotation()
 end
 
 function onDropped()
@@ -22,7 +22,7 @@ function update()
             , math.pow(velocity["z"],2)) > speedTreshold then 
             local angle = math.atan2(velocity["x"], velocity["z"])
 
-            fixate = {x = self.getRotation()["x"], y = math.deg(angle), z = self.getRotation()["z"]}
+            fixate = {x = fixate["x"], y = math.deg(angle), z = fixate["z"]}
 
         
         else
